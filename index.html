@@ -181,7 +181,6 @@
             btn.textContent = "Uploading video to cloud host...";
 
             try {
-                // Step 1: Upload video file to a temporary public host so Cloud AI can access it
                 const formData = new FormData();
                 formData.append("file", currentFile);
 
@@ -191,22 +190,20 @@
                 });
                 const uploadData = await uploadRes.json();
                 
-                // Convert temporary URL to direct download stream link
                 let publicVideoUrl = uploadData.data.url;
                 publicVideoUrl = publicVideoUrl.replace("tmpfiles.org/", "tmpfiles.org/dl/");
 
-                btn.textContent = "Sending job to Replicate AI...";
+                btn.textContent = "Rendering via Cloud AI (Polling)...";
 
-                // Step 2: Send processing instruction to Replicate API
+                // Start prediction request
                 const response = await fetch("https://api.replicate.com/v1/predictions", {
                     method: "POST",
                     headers: {
                         "Authorization": `Bearer ${REPLICATE_API_TOKEN}`,
-                        "Content-Type": "application/json",
-                        "Prefer": "wait"
+                        "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        version: "33887ef18b1c27c02e12b6f9d34208e9a6cfebbc789dfa158b45a60e0a582db6", // Whisper / Video Processing Engine Hash
+                        version: "33887ef18b1c27c02e12b6f9d34208e9a6cfebbc789dfa158b45a60e0a582db6",
                         input: {
                             video: publicVideoUrl,
                             caption_text: draggableCaption.textContent,
@@ -215,16 +212,45 @@
                     })
                 });
 
-                if (response.ok) {
-                    const result = await response.json();
-                    alert("Cloud job submitted successfully! Your rendering queue is active.");
+                if (!response.ok) throw new Error("Failed to start cloud prediction job.");
+
+                let prediction = await response.json();
+                const predictionUrl = prediction.urls.get;
+
+                // Poll status until completed
+                while (prediction.status !== "succeeded" && prediction.status !== "failed") {
+                    await new Promise(resolve => setTimeout(resolve, 3000)); // Wait 3 seconds
+                    const pollRes = await fetch(predictionUrl, {
+                        headers: { "Authorization": `Bearer ${REPLICATE_API_TOKEN}` }
+                    });
+                    prediction = await pollRes.json();
+                    
+                    if (prediction.status === "processing") {
+                        btn.textContent = "AI Processing Video...";
+                    }
+                }
+
+                if (prediction.status === "succeeded" && prediction.output) {
+                    btn.textContent = "Downloading Final Video...";
+                    
+                    // Trigger automatic file download of the processed video result
+                    const a = document.createElement('a');
+                    a.href = prediction.output;
+                    a.download = "easycap-captioned-" + currentFile.name;
+                    a.target = "_blank";
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+
+                    alert("Success! Your captioned video has finished rendering and downloaded to your device.");
                 } else {
-                    alert("Cloud connection active. Processing payload dispatched to Replicate.");
+                    alert("Cloud processing finished, but output was not returned directly. Check your Replicate dashboard.");
                 }
 
                 btn.textContent = "Process & Export via Cloud AI";
             } catch (err) {
-                alert("Cloud execution triggered successfully.");
+                console.error(err);
+                alert("Error during cloud pipeline execution. Check console logs.");
                 btn.textContent = "Process & Export via Cloud AI";
             }
         }
