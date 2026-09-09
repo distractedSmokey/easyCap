@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyCap - AI Captions & Subtitles</title>
+    <!-- Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0b0f19;
+            color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <!-- Navbar -->
+    <header class="border-b border-gray-800 px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+            <span class="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">EasyCap</span>
+            <span class="text-xs bg-purple-900/50 text-purple-300 px-2 py-0.5 rounded-full border border-purple-700/50">English & Hinglish</span>
+        </div>
+        <div class="hidden md:flex items-center space-x-6 text-sm text-gray-400">
+            <a href="#product" class="hover:text-white transition">Product</a>
+            <a href="#styles" class="hover:text-white transition">Styles</a>
+            <a href="#pricing" class="hover:text-white transition">Pricing</a>
+        </div>
+        <button class="bg-purple-600 hover:bg-purple-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition shadow-lg shadow-purple-600/30">
+            Start Free
+        </button>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="flex-1 flex flex-col items-center justify-center text-center px-4 py-16">
+        <div class="inline-flex items-center space-x-2 bg-gray-900 border border-gray-800 rounded-full px-3 py-1 mb-6 text-xs text-purple-400">
+            <span>Built for Hinglish & Gli-lish Languages</span>
+        </div>
+        
+        <h1 class="text-4xl md:text-6xl font-extrabold max-w-3xl tracking-tight leading-tight mb-6">
+            Captions that get <span class="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">Hinglish</span> right.
+        </h1>
+        
+        <p class="text-gray-400 text-base md:text-lg max-w-xl mb-10">
+            Transcribe Hindi, Hinglish, and regional speech effortlessly. Edit every word, pick viral styles, and export up to 4K.
+        </p>
+
+        <!-- Dropzone Box -->
+        <div class="w-full max-w-xl bg-gray-900/60 border-2 border-dashed border-gray-800 rounded-2xl p-8 hover:border-purple-500/50 transition cursor-pointer backdrop-blur-sm">
+            <div class="flex flex-col items-center justify-center space-y-4">
+                <div class="w-12 h-12 bg-purple-600/10 text-purple-400 rounded-xl flex items-center justify-center">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-gray-200">Drop your video or reel here, or <span class="text-purple-400 underline">browse</span></p>
+                    <p class="text-xs text-gray-500 mt-1">Supports MP4, MOV, WebM & securely runs in your browser</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-6 text-center text-xs text-gray-600 border-t border-gray-900">
+        &copy; 2026 EasyCap. Built for creators, powered by client-side browser tech.
+    </footer>
+
+</body>
+</html>
