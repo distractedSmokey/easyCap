@@ -13,6 +13,7 @@
             background-color: #0b0f19;
             color: #f3f4f6;
             user-select: none;
+            touch-action: manipulation;
         }
 
         .template-sugar { font-family:'Outfit',sans-serif; font-weight:900; text-transform:uppercase; color:#facc15; text-shadow:3px 3px 0px #000,-3px -3px 0px #000; }
@@ -61,7 +62,7 @@
             </h1>
             
             <p class="text-gray-400 text-base md:text-lg max-w-xl mb-10">
-                Upload your reel, select viral caption styles, and preview your burned-in subtitles live.
+                Upload your reel, select viral caption styles, and preview your burned-in subtitles.
             </p>
 
             <div onclick="triggerUpload()" class="w-full max-w-xl bg-gray-900/50 border-2 border-dashed border-gray-800 hover:border-purple-500/60 rounded-3xl p-10 transition cursor-pointer backdrop-blur-sm group">
@@ -90,15 +91,13 @@
                 </div>
                 
                 <div id="videoContainer" class="relative w-full aspect-[9/16] max-h-[520px] bg-black rounded-2xl overflow-hidden flex items-center justify-center border border-gray-800 shadow-2xl">
-                    <!-- Video player with standard controls to play/pause and test placement -->
                     <video id="previewVideo" class="w-full h-full object-contain" controls playsinline></video>
                     
-                    <!-- Draggable live caption overlay that moves with video play/pause -->
-                    <div id="draggableCaption" class="absolute cursor-move px-4 py-2 text-center template-sugar text-2xl border border-transparent hover:border-dashed hover:border-purple-400/80 rounded" style="top: 75%; left: 50%; transform: translate(-50%, -50%);" contenteditable="true">
+                    <div id="draggableCaption" class="absolute cursor-move px-4 py-2 text-center template-sugar text-2xl border border-purple-500/50 hover:border-dashed hover:border-purple-400 rounded bg-black/40 backdrop-blur-xs select-none" style="top: 70%; left: 50%; transform: translateX(-50%);" contenteditable="true">
                         SUGAR Daddy 🔥
                     </div>
                 </div>
-                <p class="text-[11px] text-gray-500 mt-3">💡 Play the video to test overlay position or drag caption anywhere.</p>
+                <p class="text-[11px] text-gray-500 mt-3">💡 Touch and drag the caption box anywhere on the video.</p>
             </div>
 
             <!-- Templates & Cloud Export -->
@@ -145,6 +144,7 @@
         const previewVideo = document.getElementById('previewVideo');
         const fileNameDisplay = document.getElementById('fileNameDisplay');
         const draggableCaption = document.getElementById('draggableCaption');
+        const videoContainer = document.getElementById('videoContainer');
         let currentFile = null;
 
         function triggerUpload() {
@@ -172,7 +172,7 @@
 
         function setTemplate(templateName, sampleText) {
             activeTemplate = templateName;
-            draggableCaption.className = `absolute cursor-move px-4 py-2 text-center text-2xl border border-transparent hover:border-dashed hover:border-purple-400/80 rounded outline-none template-${templateName}`;
+            draggableCaption.className = `absolute cursor-move px-4 py-2 text-center text-2xl border border-purple-500/50 hover:border-dashed hover:border-purple-400 rounded bg-black/40 backdrop-blur-xs select-none outline-none template-${templateName}`;
             draggableCaption.textContent = sampleText;
         }
 
@@ -212,43 +212,51 @@
             }
         }
 
-        // Drag & Drop Positioning Logic
+        // Mobile Touch & Mouse Dragging Logic with preventDefault
         let isDragging = false;
         let startX, startY;
-
-        draggableCaption.addEventListener('mousedown', startDrag);
-        window.addEventListener('mousemove', drag);
-        window.addEventListener('mouseup', stopDrag);
-
-        draggableCaption.addEventListener('touchstart', startDrag, {passive: true});
-        window.addEventListener('touchmove', drag, {passive: true});
-        window.addEventListener('touchend', stopDrag);
 
         function startDrag(e) {
             if (e.target.isContentEditable) return;
             isDragging = true;
+            
             const clientX = e.touches ? e.touches[0].clientX : e.clientX;
             const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-            startX = clientX - draggableCaption.offsetLeft;
-            startY = clientY - draggableCaption.offsetTop;
+            
+            const rect = draggableCaption.getBoundingClientRect();
+            startX = clientX - rect.left;
+            startY = clientY - rect.top;
+            
+            draggableCaption.style.transform = 'none';
         }
 
         function drag(e) {
             if (!isDragging) return;
+            if (e.touches) e.preventDefault();
+
             const clientX = e.touches ? e.touches[0].clientX : e.clientX;
             const clientY = e.touches ? e.touches[0].clientY : e.clientY;
             
-            let x = clientX - startX;
-            let y = clientY - startY;
+            const containerRect = videoContainer.getBoundingClientRect();
+            
+            let newX = clientX - containerRect.left - startX;
+            let newY = clientY - containerRect.top - startY;
 
-            draggableCaption.style.left = `${x}px`;
-            draggableCaption.style.top = `${y}px`;
-            draggableCaption.style.transform = 'none';
+            draggableCaption.style.left = `${newX}px`;
+            draggableCaption.style.top = `${newY}px`;
         }
 
         function stopDrag() {
             isDragging = false;
         }
+
+        draggableCaption.addEventListener('mousedown', startDrag);
+        window.addEventListener('mousemove', drag);
+        window.addEventListener('mouseup', stopDrag);
+
+        draggableCaption.addEventListener('touchstart', startDrag, {passive: false});
+        window.addEventListener('touchmove', drag, {passive: false});
+        window.addEventListener('touchend', stopDrag);
     </script>
 </body>
 </html>
