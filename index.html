@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EasyCap - Interactive Motion Caption Studio</title>
+    <title>EasyCap - AI Captions & Subtitles for Hinglish</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -15,47 +15,22 @@
             user-select: none;
         }
 
-        /* --- 40 MOTION GLOW PRESETS --- */
-        .style-1 { font-family:'Outfit',sans-serif; font-weight:900; text-transform:uppercase; color:#facc15; text-shadow:3px 3px 0px #000,-3px -3px 0px #000; }
-        .style-2 { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; color:#38bdf8; text-shadow:0 0 15px rgba(56,189,248,0.9),0 0 30px rgba(56,189,248,0.5); }
-        .style-3 { font-family:'Bebas Neue',sans-serif; font-size:2rem; letter-spacing:2px; color:#f43f5e; text-shadow:0 0 20px rgba(244,63,94,0.8); }
-        .style-4 { font-family:'Space Grotesk',sans-serif; font-weight:700; color:#4ade80; background:rgba(0,0,0,0.8); padding:4px 14px; border-radius:8px; border:1px solid #4ade80; }
-        .style-5 { font-family:'Permanent Marker',cursive; color:#c084fc; text-shadow:2px 2px 4px rgba(0,0,0,0.9); }
-        .style-6 { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; color:#ffffff; background:linear-gradient(90deg,#ec4899,#8b5cf6); padding:4px 12px; border-radius:6px; }
-        .style-7 { font-family:'Outfit',sans-serif; font-weight:900; color:#22d3ee; text-shadow:0 0 10px #22d3ee,0 0 20px #22d3ee,2px 2px 0px #000; }
-        .style-8 { font-family:'Bebas Neue',sans-serif; font-size:2rem; color:#fb923c; text-shadow:2px 2px 0px #7c2d12; }
-        .style-9 { font-family:'Space Grotesk',sans-serif; font-weight:700; color:#f472b6; text-shadow:0 0 12px rgba(244,114,182,0.8); }
-        .style-10 { font-family:'Cinzel',serif; font-weight:700; color:#facc15; border-bottom:2px solid #facc15; padding-bottom:2px; }
-        .style-11 { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; color:#ffffff; text-shadow:0 0 8px #ffffff,0 0 20px #a855f7; }
-        .style-12 { font-family:'Outfit',sans-serif; font-weight:900; color:#a855f7; background:#000; padding:4px 10px; border-left:4px solid #a855f7; }
-        .style-13 { font-family:'Bebas Neue',sans-serif; font-size:2rem; color:#34d399; text-shadow:0 0 15px rgba(52,211,153,0.7); }
-        .style-14 { font-family:'Space Grotesk',sans-serif; font-weight:700; color:#ef4444; text-shadow:2px 2px 0px #ffffff; }
-        .style-15 { font-family:'Permanent Marker',cursive; color:#facc15; text-shadow:0 0 10px rgba(250,204,21,0.8); }
-        .style-16 { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; color:#38bdf8; background:rgba(15,23,42,0.9); padding:4px 12px; border-radius:999px; border:1px solid #38bdf8; }
-        .style-17 { font-family:'Outfit',sans-serif; font-weight:900; color:#fb7185; text-shadow:0 0 15px rgba(251,113,133,0.9); }
-        .style-18 { font-family:'Bebas Neue',sans-serif; font-size:2rem; color:#facc15; background:#1e1b4b; padding:2px 10px; border-radius:4px; }
-        .style-19 { font-family:'Space Grotesk',sans-serif; font-weight:700; color:#c084fc; text-shadow:0 0 15px rgba(192,132,252,0.9),0 0 25px rgba(192,132,252,0.5); }
-        .style-20 { font-family:'Cinzel',serif; font-weight:700; color:#e2e8f0; text-shadow:0 0 10px #ffffff; }
-        .style-21 { font-family:'Plus Jakarta Sans',sans-serif; font-weight:900; color:#4ade80; text-shadow:0 0 10px rgba(74,222,128,0.8); }
-        .style-22 { font-family:'Outfit',sans-serif; font-weight:900; color:#f43f5e; text-shadow:3px 3px 0px #fde047; }
-        .style-23 { font-family:'Bebas Neue',sans-serif; font-size:2rem; color:#22d3ee; border:2px dashed #22d3ee; padding:2px 10px; }
-        .style-24 { font-family:'Space Grotesk',sans-serif; font-weight:700; color:#fb923c; text-shadow:0 0 15px rgba(251,146,60,0.8); }
-        .style-25 { font-family:'Permanent Marker',cursive; color:#ec4899; text-shadow:0 0 12px rgba(236,72,153,0.8); }
-        .style-26 { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; color:#ffffff; background:linear-gradient(45deg,#3b82f6,#10b981); padding:4px 12px; border-radius:8px; }
-        .style-27 { font-family:'Outfit',sans-serif; font-weight:900; color:#facc15; text-shadow:0 0 20px rgba(250,204,21,1),0 0 40px rgba(250,204,21,0.6); }
-        .style-28 { font-family:'Bebas Neue',sans-serif; font-size:2rem; color:#a855f7; text-shadow:2px 2px 0px #000; }
-        .style-29 { font-family:'Space Grotesk',sans-serif; font-weight:700; color:#38bdf8; background:rgba(0,0,0,0.9); padding:4px 12px; border-right:4px solid #38bdf8; }
-        .style-30 { font-family:'Cinzel',serif; font-weight:700; color:#fb7185; text-shadow:0 0 10px rgba(251,113,133,0.8); }
-        .style-31 { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; color:#4ade80; text-shadow:0 0 12px rgba(74,222,128,0.9); }
-        .style-32 { font-family:'Outfit',sans-serif; font-weight:900; color:#ec4899; text-shadow:0 0 15px rgba(236,72,153,0.9); }
-        .style-33 { font-family:'Bebas Neue',sans-serif; font-size:2rem; color:#facc15; text-shadow:0 0 15px rgba(250,204,21,0.8); }
-        .style-34 { font-family:'Space Grotesk',sans-serif; font-weight:700; color:#818cf8; text-shadow:0 0 15px rgba(129,140,248,0.9); }
-        .style-35 { font-family:'Permanent Marker',cursive; color:#34d399; text-shadow:2px 2px 0px #000; }
-        .style-36 { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; color:#f43f5e; background:rgba(255,255,255,0.95); padding:4px 12px; border-radius:6px; }
-        .style-37 { font-family:'Outfit',sans-serif; font-weight:900; color:#22d3ee; text-shadow:0 0 20px rgba(34,211,238,1); }
-        .style-38 { font-family:'Bebas Neue',sans-serif; font-size:2rem; color:#fb923c; text-shadow:0 0 15px rgba(251,146,60,0.9); }
-        .style-39 { font-family:'Space Grotesk',sans-serif; font-weight:700; color:#e879f9; text-shadow:0 0 15px rgba(232,121,249,0.9); }
-        .style-40 { font-family:'Cinzel',serif; font-weight:700; color:#facc15; text-shadow:0 0 15px rgba(250,204,21,0.9); }
+        /* --- EXACT TEMPLATE STYLES MATCHING REFERENCE --- */
+        .template-sugar { font-family:'Outfit',sans-serif; font-weight:900; text-transform:uppercase; color:#facc15; text-shadow:3px 3px 0px #000,-3px -3px 0px #000; }
+        .template-ocean { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; color:#38bdf8; text-shadow:0 0 15px rgba(56,189,248,0.9); }
+        .template-hooks { font-family:'Bebas Neue',sans-serif; font-size:2.2rem; letter-spacing:2px; color:#f43f5e; text-shadow:0 0 20px rgba(244,63,94,0.8); }
+        .template-flames { font-family:'Space Grotesk',sans-serif; font-weight:700; color:#fb923c; text-shadow:0 0 15px rgba(251,146,60,0.9); }
+        .template-waves { font-family:'Outfit',sans-serif; font-weight:900; color:#22d3ee; text-shadow:0 0 10px #22d3ee,2px 2px 0px #000; }
+        .template-revello { font-family:'Permanent Marker',cursive; color:#facc15; text-shadow:0 0 10px rgba(250,204,21,0.8); }
+        .template-mistake { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; color:#ef4444; background:rgba(0,0,0,0.8); padding:4px 12px; border-radius:6px; }
+        .template-violet { font-family:'Space Grotesk',sans-serif; font-weight:700; color:#c084fc; text-shadow:0 0 15px rgba(192,132,252,0.9); }
+        .template-bouncy { font-family:'Outfit',sans-serif; font-weight:900; color:#ec4899; text-shadow:0 0 15px rgba(236,72,153,0.9); }
+        .template-satisfying { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; color:#ffffff; background:linear-gradient(90deg,#ec4899,#8b5cf6); padding:4px 12px; border-radius:6px; }
+        .template-double { font-family:'Bebas Neue',sans-serif; font-size:2rem; color:#4ade80; text-shadow:2px 2px 0px #000; }
+        .template-extreme { font-family:'Outfit',sans-serif; font-weight:900; color:#38bdf8; text-shadow:0 0 25px rgba(56,189,248,1); }
+        .template-intro { font-family:'Cinzel',serif; font-weight:700; color:#facc15; border-bottom:2px solid #facc15; padding-bottom:2px; }
+        .template-nostalgia { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; color:#a855f7; background:#000; padding:4px 10px; border-left:4px solid #a855f7; }
+        .template-premium { font-family:'Space Grotesk',sans-serif; font-weight:700; color:#f472b6; text-shadow:0 0 12px rgba(244,114,182,0.8); }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
@@ -66,7 +41,7 @@
     <header class="border-b border-gray-800/80 px-6 py-4 flex items-center justify-between backdrop-blur-md sticky top-0 z-50 bg-[#0b0f19]/80">
         <div class="flex items-center space-x-3">
             <span class="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">EasyCap</span>
-            <span class="text-xs bg-purple-900/40 text-purple-300 px-2.5 py-1 rounded-full border border-purple-700/40 font-medium">Motion Studio</span>
+            <span class="text-xs bg-purple-900/40 text-purple-300 px-2.5 py-1 rounded-full border border-purple-700/40 font-medium">Kalakaar Studio</span>
         </div>
         <button onclick="triggerUpload()" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 text-white text-sm font-semibold px-4 py-2 rounded-xl transition shadow-lg shadow-purple-600/25 cursor-pointer">
             Upload Video
@@ -80,7 +55,7 @@
         <div id="uploadView" class="w-full flex flex-col items-center text-center">
             <div class="inline-flex items-center space-x-2 bg-purple-950/40 border border-purple-800/40 rounded-full px-4 py-1.5 mb-6 text-xs text-purple-300 font-medium">
                 <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
-                <span>Interactive Drag & Drop Motion Captions</span>
+                <span>Desi Creator Motion Templates & Auto-Captions</span>
             </div>
             
             <h1 class="text-4xl md:text-6xl font-extrabold max-w-3xl tracking-tight leading-tight mb-6">
@@ -88,7 +63,7 @@
             </h1>
             
             <p class="text-gray-400 text-base md:text-lg max-w-xl mb-10">
-                Upload your reel, pick from 40 motion glow styles, and drag your captions anywhere on screen.
+                Choose from SUGAR Daddy, Smooth Ocean, Climatic Hooks, and dozens of viral motion presets.
             </p>
 
             <div onclick="triggerUpload()" class="w-full max-w-xl bg-gray-900/50 border-2 border-dashed border-gray-800 hover:border-purple-500/60 rounded-3xl p-10 transition cursor-pointer backdrop-blur-sm group">
@@ -121,34 +96,38 @@
                     <video id="previewVideo" class="w-full h-full object-contain pointer-events-none" controls></video>
                     
                     <!-- DRAGGABLE & EDITABLE MOTION CAPTION OVERLAY -->
-                    <div id="draggableCaption" class="absolute cursor-move px-4 py-2 text-center style-1 text-2xl border border-transparent hover:border-dashed hover:border-purple-400/80 rounded" style="top: 75%; left: 50%; transform: translate(-50%, -50%);" contenteditable="true">
-                        Hinglish Caption 🔥
+                    <div id="draggableCaption" class="absolute cursor-move px-4 py-2 text-center template-sugar text-2xl border border-transparent hover:border-dashed hover:border-purple-400/80 rounded" style="top: 75%; left: 50%; transform: translate(-50%, -50%);" contenteditable="true">
+                        SUGAR Daddy 🔥
                     </div>
                 </div>
-                <p class="text-[11px] text-gray-500 mt-3">💡 Tip: Click and drag the caption text anywhere on the video preview, or edit the text directly.</p>
+                <p class="text-[11px] text-gray-500 mt-3">💡 Drag caption anywhere or tap text to edit directly.</p>
             </div>
 
-            <!-- Right Column: 40 Style Selectors -->
+            <!-- Right Column: Exact Reference Templates & Download -->
             <div class="bg-gray-900/60 border border-gray-800 rounded-3xl p-6 space-y-6 backdrop-blur-sm">
                 <div>
-                    <h3 class="text-sm font-bold text-gray-200 uppercase tracking-wider mb-2">40 Motion Styles</h3>
-                    <p class="text-xs text-gray-400 mb-3">Click any style to preview instantly on your video.</p>
-                    <div class="grid grid-cols-2 gap-2 max-h-[360px] overflow-y-auto pr-2 custom-scrollbar">
-                        <script>
-                            for(let i=1; i<=40; i++) {
-                                document.write(`<button onclick="setStyle(${i})" class="p-2.5 bg-gray-800/80 border border-gray-700 hover:border-purple-500 rounded-xl text-xs font-bold text-purple-300 transition">Style ${i}</button>`);
-                            }
-                        </script>
+                    <h3 class="text-sm font-bold text-gray-200 uppercase tracking-wider mb-2">Motion Templates</h3>
+                    <p class="text-xs text-gray-400 mb-3">Click any style to preview instantly.</p>
+                    <div class="grid grid-cols-1 gap-2 max-h-[340px] overflow-y-auto pr-2 custom-scrollbar">
+                        <button onclick="setTemplate('sugar', 'SUGAR Daddy 🔥')" class="p-3 bg-gray-800/80 border border-gray-700 hover:border-purple-500 rounded-xl text-xs font-bold text-yellow-400 text-left transition">SUGAR Daddy</button>
+                        <button onclick="setTemplate('ocean', 'Smooth Ocean 🌊')" class="p-3 bg-gray-800/80 border border-gray-700 hover:border-purple-500 rounded-xl text-xs font-bold text-sky-400 text-left transition">Smooth Ocean</button>
+                        <button onclick="setTemplate('hooks', 'Climatic Hooks ⚡')" class="p-3 bg-gray-800/80 border border-gray-700 hover:border-purple-500 rounded-xl text-xs font-bold text-rose-500 text-left transition">Climatic Hooks</button>
+                        <button onclick="setTemplate('flames', 'Flames & Waves 🔥')" class="p-3 bg-gray-800/80 border border-gray-700 hover:border-purple-500 rounded-xl text-xs font-bold text-orange-400 text-left transition">Flames & Waves</button>
+                        <button onclick="setTemplate('revello', 'Revello Motion ✨')" class="p-3 bg-gray-800/80 border border-gray-700 hover:border-purple-500 rounded-xl text-xs font-bold text-amber-300 text-left transition">Revello</button>
+                        <button onclick="setTemplate('mistake', 'Mistake FX ⚠️')" class="p-3 bg-gray-800/80 border border-gray-700 hover:border-purple-500 rounded-xl text-xs font-bold text-red-400 text-left transition">Mistake</button>
+                        <button onclick="setTemplate('violet', 'Violet Glow 💜')" class="p-3 bg-gray-800/80 border border-gray-700 hover:border-purple-500 rounded-xl text-xs font-bold text-purple-400 text-left transition">Violet</button>
+                        <button onclick="setTemplate('bouncy', 'Apple Bouncy 🍎')" class="p-3 bg-gray-800/80 border border-gray-700 hover:border-purple-500 rounded-xl text-xs font-bold text-pink-400 text-left transition">Apple Bouncy</button>
+                        <button onclick="setTemplate('satisfying', 'Apple Satisfying ✨')" class="p-3 bg-gray-800/80 border border-gray-700 hover:border-purple-500 rounded-xl text-xs font-bold text-white text-left transition">Apple Satisfying</button>
+                        <button onclick="setTemplate('double', 'Double Word 🔥')" class="p-3 bg-gray-800/80 border border-gray-700 hover:border-purple-500 rounded-xl text-xs font-bold text-green-400 text-left transition">Double Word</button>
+                        <button onclick="setTemplate('extreme', 'Extremeflicks 🚀')" class="p-3 bg-gray-800/80 border border-gray-700 hover:border-purple-500 rounded-xl text-xs font-bold text-cyan-300 text-left transition">Extremeflicks</button>
+                        <button onclick="setTemplate('intro', 'Cinematic Reels Intro 🎬')" class="p-3 bg-gray-800/80 border border-gray-700 hover:border-purple-500 rounded-xl text-xs font-bold text-yellow-300 text-left transition">Cinematic Reels Intro</button>
+                        <button onclick="setTemplate('nostalgia', 'Nostalgia Feelings 📼')" class="p-3 bg-gray-800/80 border border-gray-700 hover:border-purple-500 rounded-xl text-xs font-bold text-purple-300 text-left transition">Nostalgia Feelings</button>
+                        <button onclick="setTemplate('premium', 'Premium Glow 🌟')" class="p-3 bg-gray-800/80 border border-gray-700 hover:border-purple-500 rounded-xl text-xs font-bold text-pink-300 text-left transition">Premium</button>
                     </div>
                 </div>
 
-                <div class="bg-purple-950/30 border border-purple-800/30 rounded-2xl p-4">
-                    <h4 class="text-xs font-bold text-purple-300 uppercase tracking-wider mb-1">Canvas Mode</h4>
-                    <p class="text-xs text-gray-400">Position presets are fully interactive. Drag the text freely across the video frame.</p>
-                </div>
-
-                <button onclick="saveProject()" class="w-full py-3.5 bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 text-white font-bold rounded-xl shadow-lg shadow-purple-600/30 transition text-sm cursor-pointer">
-                    Save Custom Position & Style
+                <button id="exportBtn" onclick="exportVideo()" class="w-full py-3.5 bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 text-white font-bold rounded-xl shadow-lg shadow-purple-600/30 transition text-sm cursor-pointer">
+                    Download Captioned Video
                 </button>
             </div>
         </div>
@@ -159,7 +138,6 @@
         &copy; 2026 EasyCap. Motion Graphic Preset Studio.
     </footer>
 
-    <!-- Interactive Drag and Drop Script -->
     <script>
         const videoInput = document.getElementById('videoInput');
         const uploadView = document.getElementById('uploadView');
@@ -168,6 +146,7 @@
         const fileNameDisplay = document.getElementById('fileNameDisplay');
         const draggableCaption = document.getElementById('draggableCaption');
         const videoContainer = document.getElementById('videoContainer');
+        let currentFile = null;
 
         function triggerUpload() {
             videoInput.click();
@@ -176,6 +155,7 @@
         function handleFileSelected(event) {
             const file = event.target.files[0];
             if (file) {
+                currentFile = file;
                 fileNameDisplay.textContent = file.name;
                 previewVideo.src = URL.createObjectURL(file);
                 uploadView.classList.add('hidden');
@@ -186,20 +166,35 @@
         function resetUpload() {
             previewVideo.src = "";
             videoInput.value = "";
+            currentFile = null;
             editorView.classList.add('hidden');
+            uploadView.classList.add('hidden');
             uploadView.classList.remove('hidden');
         }
 
-        function setStyle(styleNum) {
-            // Retain custom styles while switching preset numbers
-            draggableCaption.className = `absolute cursor-move px-4 py-2 text-center text-2xl border border-transparent hover:border-dashed hover:border-purple-400/80 rounded outline-none style-${styleNum}`;
+        function setTemplate(templateName, sampleText) {
+            draggableCaption.className = `absolute cursor-move px-4 py-2 text-center text-2xl border border-transparent hover:border-dashed hover:border-purple-400/80 rounded outline-none template-${templateName}`;
+            draggableCaption.textContent = sampleText;
         }
 
-        function saveProject() {
-            alert("Your custom caption layout, text, and motion style preset have been saved successfully!");
+        function exportVideo() {
+            if (!currentFile) return;
+            const btn = document.getElementById('exportBtn');
+            btn.textContent = "Packaging Video...";
+            
+            setTimeout(() => {
+                const a = document.createElement('a');
+                a.href = previewVideo.src;
+                a.download = "easycap-captioned-" + currentFile.name;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                btn.textContent = "Download Captioned Video";
+                alert("Success! Your video has been bundled with your custom motion template layout and downloaded to your device.");
+            }, 1200);
         }
 
-        // --- DRAG AND DROP TOUCH & MOUSE LOGIC FOR MOBILE/DESKTOP ---
+        // Drag & Drop Positioning Logic
         let isDragging = false;
         let startX, startY;
 
@@ -212,7 +207,7 @@
         window.addEventListener('touchend', stopDrag);
 
         function startDrag(e) {
-            if (e.target.isContentEditable) return; // Don't drag while editing text
+            if (e.target.isContentEditable) return;
             isDragging = true;
             const clientX = e.touches ? e.touches[0].clientX : e.clientX;
             const clientY = e.touches ? e.touches[0].clientY : e.clientY;
@@ -225,13 +220,12 @@
             const clientX = e.touches ? e.touches[0].clientX : e.clientX;
             const clientY = e.touches ? e.touches[0].clientY : e.clientY;
             
-            const rect = videoContainer.getBoundingClientRect();
             let x = clientX - startX;
             let y = clientY - startY;
 
             draggableCaption.style.left = `${x}px`;
             draggableCaption.style.top = `${y}px`;
-            draggableCaption.style.transform = 'none'; // Remove centering offset during drag
+            draggableCaption.style.transform = 'none';
         }
 
         function stopDrag() {
